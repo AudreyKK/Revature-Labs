@@ -5,6 +5,16 @@ import java.util.Scanner;
 
 public class Converter {
 	static double poundsToKilogramsFactor = 2.20462;
+	static double ouncesToGramsFactor = 28.3495;
+	static double gallonsToLitersFactor = 3.78541;
+	static double cupsToTablespoonsFactor = 16.2307;
+	static double cubicFootToQuartsFactor = 29.9221;
+	static double milesToKilometersFactor = 1.60934;
+	static double metersToFeetFactor = 3.28084;
+	static double milesToNauticalMilesFactor = 0.86897626970789;
+	static double poundsToDollarsFactor = 1.38;
+	
+	
 	static final Scanner sc = new Scanner(System.in);
 	
 	public static double collectQuantity() {
@@ -13,8 +23,54 @@ public class Converter {
 	
 	public static void poundsToKilos(double pounds) {
 		double result = pounds * poundsToKilogramsFactor;
-		System.out.println("" + pounds + " pounds is equivalent to ");
-		System.out.println("" + result + " kilograms.");
+		System.out.println("\n" + pounds + " pound(s) converts to ");
+		System.out.println("" + result + " kilograms.\n");
+	}
+	
+	public static void ozToGrams(double oz) {
+		double result = oz * ouncesToGramsFactor;
+		System.out.println("\n" + oz + " ounce(s) converts to ");
+		System.out.println("" + result + " grams.\n");
+	}
+	
+	public static void galToLiter(double gal) {
+		double result = gal * gallonsToLitersFactor;
+		System.out.println("\n" + gal + " gallon(s) converts to ");
+		System.out.println("" + result + " liters.\n");
+	}
+	
+	public static void cupToTbsp(double cup) {
+		double result = cup * cupsToTablespoonsFactor;
+		System.out.println("\n" + cup + " cup(s) converts to ");
+		System.out.println("" + result + " grams.\n");
+	}
+	
+	public static void cubFootToQuart(double cubicFeet) {
+		double result = cubicFeet * cubicFootToQuartsFactor;
+		System.out.println("\n" + cubicFeet + " cubic feet converts to ");
+		System.out.println("" + result + " quart(s).\n");
+	}
+	
+	public static void milesToKm (double miles){
+		double result = miles * milesToKilometersFactor;
+		System.out.println("\n" + miles + " mile(s) converts to ");
+		System.out.println("" + result + " kilometer(s).\n");
+	}
+	
+	public static void metersToFeet (double meters) {
+		double result = meters * metersToFeetFactor;
+		System.out.println("\n" + meters + " meter(s) converts to ");
+		System.out.println("" + result + " feet.\n");
+	}
+	
+	public static void milesToNauts (double miles) {
+		double result = miles * milesToNauticalMilesFactor;
+		System.out.println("\n" + miles + " miles(s) converts to ");
+		System.out.println("" + result + " nautical mile(s).\n");
+	}
+	
+	public static void poundsToDollars (double pounds) {
+		
 	}
 	
 	public static void mainMenu() {
@@ -59,17 +115,96 @@ public class Converter {
 	
 	// 
 	public static void volumeMenu() {
-		System.out.println("todo");
+		System.out.println("Select what you want to convert: ");
+		System.out.println("1. Cups to tbsp");
+		System.out.println("2. Gallons to liters");
+		System.out.println("3. Cubic feet to quarts");
+		
+		sc.nextLine(); // get rid of lingering \n if present.
+		String input = sc.nextLine();
+		
+		switch(input) {
+			case "1": {
+				System.out.println("Please enter the quantity you want converted");
+				double resp = collectQuantity();
+				cupToTbsp(resp);
+				break;
+			}
+			case "2": { 
+				System.out.println("Please enter the quanitity you want converted");
+				double resp = collectQuantity();
+				galToLiter(resp);
+	
+			}
+			case "3": {
+				System.out.println("Please enter the quanitity you want converted");
+				double resp = collectQuantity();
+				cubFootToQuart(resp);
+			}
+		}
 	}
 	
 	//
 	public static void distanceMenu() {
-		System.out.println("todo");
+		System.out.println("Select what you want to convert: ");
+		System.out.println("1. Miles to kilometers");
+		System.out.println("2. Meters to feet");
+		System.out.println("3. Miles to nautical miles");
+		
+		sc.nextLine(); // get rid of lingering \n if present.
+		String input = sc.nextLine();
+		
+		switch(input) {
+			case "1": {
+				System.out.println("Please enter the distance you want converted");
+				double resp = collectQuantity();
+				milesToKm(resp);
+				break;
+			}
+			case "2": { 
+				System.out.println("Please enter the distance you want converted");
+				double resp = collectQuantity();
+				metersToFeet(resp);
+				break;
+			}
+			case "3": {
+				System.out.println("Please enter the distance you want converted");
+				double resp = collectQuantity();
+				milesToNauts(resp);
+			}
+		}
 	}
 	
 	// 
 	public static void currencyMenu() {
-		System.out.println("todo");
+		System.out.println("Select what you want to convert: ");
+		System.out.println("1. Miles to kilometers");
+		System.out.println("2. Meters to feet");
+		System.out.println("3. Miles to nautical miles");
+		
+		sc.nextLine(); // get rid of lingering \n if present.
+		String input = sc.nextLine();
+		
+		switch(input) {
+			case "1": {
+				System.out.println("Please enter the quantity of currency you want converted");
+				double resp = collectQuantity();
+				poundsToDollars(resp);
+				break;
+			}
+			case "2": { 
+				System.out.println("Please enter the quantity of currency you want converted");
+				double resp = collectQuantity();
+				dollarsToPesos(resp);
+				break;
+	
+			}
+			case "3": {
+				System.out.println("Please enter the quantity of currency you want converted");
+				double resp = collectQuantity();
+				dollarsToRupees(resp);
+			}
+		}
 	}
 	
 	
@@ -82,7 +217,7 @@ public class Converter {
 		System.out.println("2. oz to grams");
 		System.out.println("3. Interplanetary weight conversion");
 		
-		sc.nextLine(); // get rid of lingering \n if present.
+		sc.next(); // get rid of lingering \n if present.
 		input = sc.nextLine();
 		
 		switch(input) {
@@ -90,8 +225,16 @@ public class Converter {
 				System.out.println("Please enter the quantity you want converted");
 				double resp = collectQuantity();
 				poundsToKilos(resp);
+				break;
+			}
+			case "2": { 
+				System.out.println("Please enter the quanitity you want converted");
+				double resp = collectQuantity();
+				ozToGrams(resp);
+	
 			}
 		}
+		
 			
 	}
 	
@@ -132,21 +275,26 @@ public class Converter {
 					break;
 				}
 				
-				case 5: break;
+				case 5: running = false;
+				break;
 			}
 			
 
 			// refactor
-			System.out.println("Run program again? Y/N");
-			String resp = sc.nextLine();
-			if (resp.charAt(0) == 'N') {
-				running = false;
+			if (input != 5) {
+				System.out.println("\nRun program again? Y/N\n");
+				//sc.next(); // clear buffer
+				String resp = sc.next();
+				if (resp.equals(String.valueOf('N'))) {
+					running = false;
+				}
 			}
 			// end refactor
 			
 			
 		}
 		sc.close();
+		System.out.println("Exited program.");
 	}
 
 }
