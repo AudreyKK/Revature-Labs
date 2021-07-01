@@ -5,6 +5,17 @@ import java.util.Scanner;
 
 public class Converter {
 	static double poundsToKilogramsFactor = 2.20462;
+	static final Scanner sc = new Scanner(System.in);
+	
+	public static double collectQuantity() {
+		return sc.nextDouble();
+	}
+	
+	public static void poundsToKilos(double pounds) {
+		double result = pounds * poundsToKilogramsFactor;
+		System.out.println("" + pounds + " pounds is equivalent to ");
+		System.out.println("" + result + " kilograms.");
+	}
 	
 	public static void mainMenu() {
 		System.out.println("What kind of conversion would you like to make?");
@@ -23,11 +34,10 @@ public class Converter {
 	public static int validateInput() {
 		boolean validating = true;
 		int resp = 0;
-		Scanner scanner = new Scanner(System.in);
 		
 		while (validating) {
 			try {
-				resp = scanner.nextInt();
+				resp = sc.nextInt();
 			
 				if (resp < 6 & resp > 0) {
 					validating = false;
@@ -37,13 +47,12 @@ public class Converter {
 				
 			} catch (NoSuchElementException ex){
 				System.out.println("Please enter a valid number");
-				scanner.nextLine();
+				sc.nextLine();
 				
 			}
 			
 		
 		}
-		scanner.close();
 		return resp;
 	}
 
@@ -65,12 +74,6 @@ public class Converter {
 	
 	
 	//
-	public static double pounds2kilos (String amount) {
-		
-		return Double.parseDouble(amount) * poundsToKilogramsFactor;
-	}
-	
-	//
 	public static void weightsMenu() {
 		String input;
 		
@@ -79,18 +82,17 @@ public class Converter {
 		System.out.println("2. oz to grams");
 		System.out.println("3. Interplanetary weight conversion");
 		
-		
-		Scanner sc = new Scanner(System.in);
+		sc.nextLine(); // get rid of lingering \n if present.
 		input = sc.nextLine();
 		
-		try {
-			switch(input) {
-				case "1": pounds2Kilos();
+		switch(input) {
+			case "1": {
+				System.out.println("Please enter the quantity you want converted");
+				double resp = collectQuantity();
+				poundsToKilos(resp);
 			}
-		}catch (NoSuchElementException ex){
-			System.out.println("Please enter a valid number");
-			sc.nextLine();
 		}
+			
 	}
 	
 	
@@ -134,11 +136,17 @@ public class Converter {
 			}
 			
 
-			running = false;
+			// refactor
+			System.out.println("Run program again? Y/N");
+			String resp = sc.nextLine();
+			if (resp.charAt(0) == 'N') {
+				running = false;
+			}
+			// end refactor
 			
 			
 		}
-
+		sc.close();
 	}
 
 }
