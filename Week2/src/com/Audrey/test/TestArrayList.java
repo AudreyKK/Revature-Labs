@@ -27,7 +27,7 @@ public class TestArrayList {
 			GenericItem item = iter.next();
 			System.out.println("removing item: " + item);
 			iter.remove();
-			items.add(new GenericItem(6, "this is a new item"));
+			//items.add(new GenericItem(6, "this is a new item"));
 		}
 		
 		//confirm size is 0
