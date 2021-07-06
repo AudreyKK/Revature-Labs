@@ -454,7 +454,7 @@ public class Converter {
 			}
 			
 
-			// refactor
+			
 			if (input != 5) {
 				System.out.println("\nRun program again? Y/N\n");
 				//sc.next(); // clear buffer
@@ -463,10 +463,10 @@ public class Converter {
 					running = false;
 				}
 			}
-			// end refactor
 			
 			
-		}
+			
+		} // end while
 		sc.close();
 		System.out.println("Exited program.");
 	}
